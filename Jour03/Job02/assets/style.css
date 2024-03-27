@@ -1,0 +1,11 @@
+
+
+#img__container img {
+    margin: 5px;
+}
+
+.drag-area {
+    display: flex;
+    height: 50vh;
+    width: 100%;
+}
