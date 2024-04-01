@@ -3,19 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <form action="">
+    <form action="" class="form" id="filter_pokemon_form">
         <input type="number" id="id_input" placeholder="ID">
         <input type="text" id="name_input" placeholder="name">
-        <label for="type_select">Type</label>   
-        <select name="type" id="type_select"></select>
-        <button id="button">Filter</button>
+        <div>
+            <label for="type_select">Type</label>   
+            <select name="type" id="type_select">
+                <option value="">Select a type</option>
+            </select>
+        </div>
+        <button class="button" id="button">Filter</button>
     </form>
-    <div id="pokemon__container">
-
+    <div class="pokemon__container" id="pokemon_container">
+        
     </div>
     <script src="./script.js"></script>
 </body>
+
+
 </html>

@@ -1,0 +1,108 @@
+/* .form {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2rem;
+    border: 10px solid #D3231C;
+    margin-bottom: 2rem;
+    box-shadow: #09214B 4px 4px 0 0;
+    align-items: flex-start;
+}
+.form input{
+    height: 20px;
+    font-size: 14pt;
+}
+.form select {
+    height: 20px;
+}
+
+.pokemon__container {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch;
+    gap: 3rem;
+}
+.pokemon__card {
+    background-color: #F0BD04;
+    border: 1px solid wheat;
+    box-shadow: #09214B 4px 4px 0 0, #D3231C 4px 4px 0 1px;
+    padding: 1rem;
+    display: flex;
+    gap: 0.6rem;
+    flex-direction: column;
+    justify-content: center;
+    transition: transform 0.5s;
+}
+.pokemon__card ul{
+    list-style: none;
+} */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.form {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+}
+
+.form input[type="number"],
+.form input[type="text"],
+.form select {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.button {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #ffdb4d;
+}
+
+.pokemon__container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.pokemon__card {
+
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: start;
+}
+.pokemon__card h3{
+    text-align: center;
+}
+.pokemon__card ul{
+    list-style: none;
+}
+
+
+
