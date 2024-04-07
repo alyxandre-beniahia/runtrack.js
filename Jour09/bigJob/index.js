@@ -7,49 +7,79 @@ document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
 
   var calendar = new FullCalendar.Calendar(calendarEl, {
+    themeSystem: "bootstrap5",
     initialView: "dayGridMonth",
     headerToolbar: {
       center: "addEventButton",
+    },
+    eventClick: function (info) {
+      var eventDate = info.event.start;
+
+      // Check if the event's date is in the future
+      if (eventDate > new Date()) {
+        if (confirm("Are you sure you want to delete this event?")) {
+          info.event.remove();
+          var userEvents =
+            JSON.parse(localStorage.getItem("user_events")) || {};
+          var email = localStorage.getItem("email");
+          var events = userEvents[email] || [];
+
+          // Filter out the deleted event
+          var updatedEvents = events.filter(function (event) {
+            return !(
+              event.title === info.event.title &&
+              event.date === info.event.start.toISOString()
+            );
+          });
+
+          // Update localStorage with the updated events
+          userEvents[email] = updatedEvents;
+          localStorage.setItem("user_events", JSON.stringify(userEvents));
+        }
+      } else {
+        alert("You can only delete events in the future.");
+      }
     },
     customButtons: {
       addEventButton: {
         text: "Demande d'autorisation de présence",
         click: function () {
-          var userDates = JSON.parse(localStorage.getItem("user_dates")) || {};
+          var userEvents =
+            JSON.parse(localStorage.getItem("user_events")) || {};
 
           var email = localStorage.getItem("email");
-          var dates = userDates[email] || [];
+          var events = userEvents[email] || [];
 
+          var title = prompt("Enter the event title");
           var dateStr = prompt("Enter a date in YYYY-MM-DD format");
           var date = new Date(dateStr + "T00:00:00");
 
-          if (!isNaN(date.valueOf())) {
+          if (!isNaN(date.valueOf()) && title.trim() !== "") {
             calendar.addEvent({
-              title: "Demande de présence pour la journée",
+              title: title,
               start: date,
               allDay: true,
             });
-            dates.push(date);
+            events.push({ title: title, date: date.toISOString() });
 
-            userDates[email] = dates;
+            userEvents[email] = events;
 
-            localStorage.setItem("user_dates", JSON.stringify(userDates));
+            localStorage.setItem("user_events", JSON.stringify(userEvents));
           } else {
-            alert("Invalid date.");
+            alert("Invalid input.");
           }
         },
       },
     },
   });
 
-  // Load user's dates onto the calendar
-  var userDates = JSON.parse(localStorage.getItem("user_dates")) || {};
+  var userEvents = JSON.parse(localStorage.getItem("user_events")) || {};
   var email = localStorage.getItem("email");
-  var dates = userDates[email] || [];
-  dates.forEach(function (date) {
+  var events = userEvents[email] || [];
+  events.forEach(function (event) {
     calendar.addEvent({
-      title: "dynamic event",
-      start: date,
+      title: event.title,
+      start: event.date,
       allDay: true,
     });
   });
@@ -63,3 +93,5 @@ document.addEventListener("DOMContentLoaded", function () {
     window.location.href = "login.html";
   });
 });
+
+//Need to store the name of the event, add the edit event option
