@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light align-items-center justify-content-between">
+        <h1 id="header__title" class="navbar-brand justify-content-center m-3">Register</h1>
+        <a class="nav-link link-primary m-3" href="./connexion.html">Log in</a>
+    </nav>
+    <main class="bg-white text-dark d-flex flex-column justify-content-center align-items-center main" style="height: 100vh;">
+        <div id="form__container" class="border border-grey rounded bg-light form_container p-4">
+            <form id="registerForm" class="text-center">
+                <div id="name_div" class="form-outline mb-4">
+                    <input type="text" name="name" id="name_input" placeholder="nom" class="form-control mb-4">
+                    <input type="text" name="fname" id="fname_input" placeholder="prénom" class="form-control">
+                </div>
+                <div id="email_div" class="form-outline mb-4">
+                    <input type="email" name="email" id="email_input" placeholder="email" class="form-control">
+                </div>
+                <div id="pw_div" class="form-outline mb-4">
+                    <input type="password" name="password" id="password_input" placeholder="Mot de passe.." class="form-control mb-4">
+                    <input type="password" name="password" id="password_input_conf" placeholder="Confirmer mot de passe.." class="form-control">
+                </div>
+                <div id="adress_div" class="form-outline mb-4">
+                    <input type="text" name="adress" id="adress_input" placeholder="adresse" class="form-control">
+                </div>
+                <div id="postal_code_div" class="form-outline mb-4">
+                    <input type="text" name="postal_code" id="postal_code_input" placeholder="code postal" class="form-control">
+                </div>
+                <input type="submit" id="submitBtn" value="Submit">
+            </form>
+        </div>
+    </main>
+    <script src="./register.js"></script>
+</body>
+</html>
